@@ -5,6 +5,7 @@ import { InstagramLoginComponent } from './components/instagram-login/instagram-
 import { MicrosoftLoginComponent } from './components/microsoft-login/microsoft-login.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'hotmail', component: MicrosoftLoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dash', component: DashboardComponent },
+  { path: 'edit', component: AdminComponent },
 ];
 
 @NgModule({
