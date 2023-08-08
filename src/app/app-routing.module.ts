@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { InstagramLoginComponent } from './components/instagram-login/instagram-login.component';
 import { MicrosoftLoginComponent } from './components/microsoft-login/microsoft-login.component';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: MainComponent },
   { path: 'ig', component: InstagramLoginComponent },
   { path: 'hotmail', component: MicrosoftLoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'dash', component: DashboardComponent },
 ];
 
 @NgModule({
