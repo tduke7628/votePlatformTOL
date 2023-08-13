@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DetailService } from 'src/app/services/detail.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,14 +10,20 @@ import { environment } from 'src/environments/environment';
 })
 export class DashboardComponent implements OnInit {
   SERVER_URL = environment.SERVER_URL;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private detailService: DetailService) {}
   details: any = '';
   ngOnInit(): void {
-    this.details = this.http
-      .get(`${this.SERVER_URL}details/get`)
-      .subscribe((response) => {
-        console.log(response);
+    this.detailService.getDetails().subscribe((resp) => {
+      this.details = resp.reverse();
+    });
+  }
+  del(index: any) {
+    let user = sessionStorage.getItem('user');
+    this.detailService
+      .deleteDetail({ userId: user }, index)
+      .subscribe((resp) => {
+        this.details = resp;
       });
-    console.log(this.details);
+    console.log(index);
   }
 }

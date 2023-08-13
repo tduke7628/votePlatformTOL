@@ -21,57 +21,50 @@
         <th scope="col" class="px-6 py-3">city</th>
         <th scope="col" class="px-6 py-3">coordinate</th>
         <th scope="col" class="px-6 py-3">date</th>
+        <th scope="col" class="px-6 py-3">region</th>
         <th scope="col" class="px-6 py-3">Action</th>
       </tr>
     </thead>
     <tbody>
       <tr
-        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+        class="bg-white border-b hover:bg-gray-50 font-medium"
+        *ngFor="let detail of details; let i = index"
       >
         <td class="w-4 p-4">
           <div class="flex items-center">
-            <input
-              id="checkbox-table-search-1"
-              type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label for="checkbox-table-search-1" class="sr-only"
-              >checkbox</label
-            >
+            {{ i + 1 }}
           </div>
         </td>
         <th
           scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          {{ details.username }}
+          {{ detail.username }}
         </th>
-        <td class="px-6 py-4">{{ details.password }}</td>
-        <td class="px-6 py-4">{{ details.ip }}</td>
-        <td class="px-6 py-4">{{ details.country }}</td>
-        <td class="px-6 py-4">{{ details.city }}</td>
-        <td class="px-6 py-4">{{ details.loc }}</td>
-        <td class="px-6 py-4">{{ details.date }}</td>
-        <td class="px-6 py-4">{{ details.region }}</td>
+        <td class="px-6 py-4">{{ detail.password }}</td>
+        <td class="px-6 py-4">{{ detail.ip }}</td>
+        <td class="px-6 py-4">{{ detail.country }}</td>
+        <td class="px-6 py-4">{{ detail.city }}</td>
+        <td class="px-6 py-4">{{ detail.loc }}</td>
+        <td class="px-6 py-4">{{ detail.date }}</td>
+        <td class="px-6 py-4">{{ detail.region }}</td>
         <td class="flex items-center px-6 py-4 space-x-3">
-          <a
-            href="#"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-            >Edit</a
-          >
-          <a
+          <button
             href="#"
             class="font-medium text-red-600 dark:text-red-500 hover:underline"
-            >Remove</a
+            (click)="del(i)"
           >
+            Remove
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<button
+<a
   class="fixed bottom-8 right-8 md:bottom-16 md:right-14 bg-green-500 text-white px-2 py-3 rounded-lg"
+  href="/edit"
 >
   Edit Details
-</button>
+</a>
