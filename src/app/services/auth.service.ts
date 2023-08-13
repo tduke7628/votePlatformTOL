@@ -18,7 +18,7 @@ export class AuthService {
     return this.http.post<any>(url, user);
   }
   setUser(user: any) {
-    sessionStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('user', user._id);
   }
   getUser() {
     let user: any = sessionStorage.getItem('user');

