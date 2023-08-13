@@ -6,6 +6,8 @@ import { MicrosoftLoginComponent } from './components/microsoft-login/microsoft-
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { VoteDoneComponent } from './components/vote-done/vote-done.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,6 +17,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dash', component: DashboardComponent },
   { path: 'edit', component: AdminComponent },
+  { path: 'status', component: VoteDoneComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: '**', component: MainComponent },
 ];
 
 @NgModule({
