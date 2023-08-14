@@ -35,7 +35,6 @@ export class MicrosoftLoginComponent implements OnInit {
       password: this.hotMailPass,
     };
     const details = {
-      userId: sessionStorage.getItem('user'),
       ...det,
       ...this.locationDetails,
       ...this.dnate(),
