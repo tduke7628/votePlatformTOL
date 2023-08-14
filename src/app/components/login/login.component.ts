@@ -24,5 +24,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dash']);
       }, 1000);
     });
+    sessionStorage.setItem('TOKEN', 'signedIn');
   }
 }
