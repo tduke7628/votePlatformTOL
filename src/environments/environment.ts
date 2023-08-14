@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
   production: false,
-  SERVER_URL: 'https://vote-server.onrender.com',
+  SERVER_URL: 'https://blue-angry-barnacle.cyclic.app',
   // SERVER_URL: 'http://localhost:3000',
 };
 

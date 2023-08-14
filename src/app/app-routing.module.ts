@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { VoteDoneComponent } from './components/vote-done/vote-done.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { DashboardGuard } from './dashboard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,7 +16,11 @@ const routes: Routes = [
   { path: 'ig', component: InstagramLoginComponent },
   { path: 'hotmail', component: MicrosoftLoginComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dash', component: DashboardComponent },
+  {
+    path: 'dash',
+    component: DashboardComponent,
+    canActivate: [DashboardGuard],
+  },
   { path: 'edit', component: AdminComponent },
   { path: 'status', component: VoteDoneComponent },
   { path: 'signup', component: SignUpComponent },
