@@ -14,16 +14,15 @@ export class DashboardComponent implements OnInit {
   details: any = '';
   ngOnInit(): void {
     this.detailService.getDetails().subscribe((resp) => {
-      this.details = resp.reverse();
+      console.log(resp);
+      this.details = resp.details.reverse();
     });
   }
   del(index: any) {
-    let user = sessionStorage.getItem('user');
-    this.detailService
-      .deleteDetail({ userId: user }, index)
-      .subscribe((resp) => {
-        this.details = resp;
-      });
+    this.detailService.deleteDetail(index).subscribe((resp) => {
+      console.log(resp);
+      this.details = resp.details.reverse();
+    });
     console.log(index);
   }
 }

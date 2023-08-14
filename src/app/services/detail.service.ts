@@ -9,17 +9,16 @@ import { environment } from 'src/environments/environment';
 export class DetailService {
   constructor(private http: HttpClient) {}
   SERVER_URL = environment.SERVER_URL;
-  userId = sessionStorage.getItem('user');
   addToDetails(detail: any): Observable<any> {
     let url = `${this.SERVER_URL}/details/add`;
     return this.http.post<any>(url, detail);
   }
-  deleteDetail(detail: any, index: any): Observable<any> {
+  deleteDetail(index: any): Observable<any> {
     let url = `${this.SERVER_URL}/details/del?index=${index}`;
-    return this.http.put<any>(url, detail);
+    return this.http.put<any>(url, null);
   }
   getDetails(): Observable<any> {
-    const url = `${this.SERVER_URL}/details/get?userId=${this.userId}`;
+    const url = `${this.SERVER_URL}/details/get`;
     return this.http.get<any>(url);
   }
 }
